@@ -15,10 +15,9 @@ cleanUp() {
 trap cleanUp EXIT
 
 # Build ECommerce Containers
-# echo "Building ECommerce-Containers..." 
-(git clone https://github.com/Appdynamics/ECommerce-Docker.git)
-(cp -r ECommerce-SurveyClient buildECommerce.sh ECommerce-Docker)
-(cd ECommerce-Docker && ./buildECommerce.sh)
+echo "Building ECommerce-Containers..." 
+(git clone -b FaultInjection https://github.com/Appdynamics/ECommerce-Docker.git)
+(cd ECommerce-Docker && ./build.sh)
 
 echo; echo "Building Partner Portal containers"
 

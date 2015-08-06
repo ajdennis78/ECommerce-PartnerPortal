@@ -9,7 +9,7 @@ This app is composed by a Python tier, a Node.js tier and a PHP tier. It links t
 - To build PHP tier, download PHP agent (name it: appdynamics-php-agent-x64-linux-tar-self-service.zip) and put into PHP-App folder
 - To change Node.js agent version, modify line 20 and give desired version:
 ```
-RUN cd /nodecellar && npm install appdynamics@4.1.0
+	RUN cd /nodecellar && npm install appdynamics@4.1.0
 ```
 - Add environment variable to env.sh
 
