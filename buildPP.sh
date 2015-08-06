@@ -1,7 +1,6 @@
 #!/bin/bash
 
 cleanUp() {
-  rm -rf ECommerce-Docker
   rm -rf Python-App
  
   # Remove dangling images left-over from build

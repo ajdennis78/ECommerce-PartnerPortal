@@ -1,9 +1,7 @@
 #!/bin/bash
 
 cleanUp() {
-  rm -rf ECommerce-Docker
   rm -rf Python-App
- 
   # Remove dangling images left-over from build
   if [[ `docker images -q --filter "dangling=true"` ]]
   then
@@ -17,7 +15,9 @@ trap cleanUp EXIT
 # Build ECommerce Containers
 echo "Building ECommerce-Containers..." 
 (git clone -b FaultInjection https://github.com/Appdynamics/ECommerce-Docker.git)
+(cp env.sh ECommerce-Docker)
 (cd ECommerce-Docker && ./build.sh)
+(cp ECommerce-Docker/run.sh ./startECommerce.sh)
 
 echo; echo "Building Partner Portal containers"
 
