@@ -15,9 +15,9 @@ trap cleanUp EXIT
 # Build ECommerce Containers
 echo "Building ECommerce-Containers..." 
 (git clone -b FaultInjection https://github.com/Appdynamics/ECommerce-Docker.git)
-(cp env.sh ECommerce-Docker)
 (cd ECommerce-Docker && ./build.sh)
 (cp ECommerce-Docker/run.sh ./startECommerce.sh)
+(rm -rf ECommerce-Docker)
 
 echo; echo "Building Partner Portal containers"
 
