@@ -9,7 +9,7 @@ ACCOUNT_NAME=customer1
 ACCESS_KEY=
 
 # Set app variables
-APP_NAME=Partner-Portal-App
+PP_APP_NAME=Partner-Portal-App
 PY_TIER_NAME=Partner-Portal-Tier
 PY_NODE_NAME=Partner-Portal-Node
 PHP_TIER_NAME=Partner-Catalog-Tier
