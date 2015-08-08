@@ -47,18 +47,18 @@ docker run -d --name customer_survey_service \
 
 echo "Start Partner Portal App (Python)"
 # Start Python containers 
-echo -n "mysql: "; docker run -d --name python_mysql appdynamics/python-mysql:latest
-echo -n "postgresql: ";docker run -d --name python_postgresql appdynamics/python-postgresql:latest
+echo -n "python_mysql: "; docker run -d --name python_mysql appdynamics/python-mysql:latest
+echo -n "python_postgresql: ";docker run -d --name python_postgresql appdynamics/python-postgresql:latest
 sleep 10
 
-echo -n "py_app: ";docker run -d --name python_app \
+echo -n "python_app: ";docker run -d --name python_app \
 	-e ACCOUNT_NAME=${ACCOUNT_NAME} -e ACCESS_KEY=${ACCESS_KEY} -e SSL=${SSL}\
 	-e CONTROLLER=${CONTR_HOST} -e APPD_PORT=${CONTR_PORT} \
 	-e APP_NAME=${PP_APP_NAME} -e TIER_NAME=${PY_TIER_NAME} -e NODE_NAME=${PY_NODE_NAME} \
 	--link python_mysql:python_mysql --link python_postgresql:python_postgresql \
 	--link partner_catalog_service:partner_catalog_service --link customer_survey_service:customer_survey_service appdynamics/python-app:latest
 
-echo -n "load: "; docker run -d --name python_siege -e BUNDY_TIER=${SIEGE_URL} -e PROCUREMENT_URL=${PROCUREMENT_URL}\
+echo -n "python_siege: "; docker run -d --name python_siege -e BUNDY_TIER=${SIEGE_URL} -e PROCUREMENT_URL=${PROCUREMENT_URL}\
 	--link web:web --link python_app:python_app appdynamics/python-siege:latest
 
 exit 0
